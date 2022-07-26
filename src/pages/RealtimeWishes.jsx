@@ -5,19 +5,15 @@ import styled from 'styled-components';
 import Wishes from '../components/Realtime-wishes/Wishes';
 
 const Container = tw.main`
-    w-full
-    h-screen
+    w-full h-screen
 `;
 
-const LoadingTextContainer = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  p {
-    text-align: center;
-    color: ${(props) => props.theme.textColor};
-  }
+const LoadingTextContainer = tw.div`
+     border-red-300
+`;
+
+const LoadingText = tw.p`
+    text-cyan-400
 `;
 
 export default function RealtimeWishes() {
@@ -26,7 +22,7 @@ export default function RealtimeWishes() {
     <Container>
       {isLoading ? (
         <LoadingTextContainer>
-          <p>소원 쪽지를 불러오고 있습니다...</p>
+          <LoadingText>소원 쪽지를 불러오고 있습니다...</LoadingText>
         </LoadingTextContainer>
       ) : (
         <Wishes data={data} />
