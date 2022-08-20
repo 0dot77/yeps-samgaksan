@@ -16,7 +16,7 @@ const MainContainer = styled.main`
 const NavContainer = styled.nav`
   display: none;
   position: absolute;
-  z-index: 10000;
+  z-index: 100000;
   right: 1rem;
   top: 1rem;
   font-family: MainFont;
@@ -51,12 +51,12 @@ const WishContainer = styled.section`
   display: ${(props) => (props.wishShow ? 'normal' : 'none')};
   width: 100%;
   overflow-y: scroll;
-  top: 10%;
+
   position: absolute;
   z-index: 10000;
   background: rgba(100, 100, 255, 0.5);
   backdrop-filter: blur(2px);
-
+  filter: blur(3px);
   animation: ${heightAnimation} 2s ease forwards;
   font-family: MainFont;
 `;
