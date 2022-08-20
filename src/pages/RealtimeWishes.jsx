@@ -1,8 +1,7 @@
 import { useQuery } from 'react-query';
 import { fetchWishes } from '../db/api';
 import tw from 'tailwind-styled-components';
-import styled from 'styled-components';
-import Wishes from '../components/Realtime-wishes/Wishes';
+import Wishes from '../components/Wishes';
 
 const Container = tw.main`
     w-full h-screen
