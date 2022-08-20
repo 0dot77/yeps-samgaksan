@@ -1,7 +1,7 @@
 import Rock from '../components/model/Rock';
 import styled, { keyframes } from 'styled-components';
 import { Canvas } from '@react-three/fiber';
-import { Environment, OrbitControls, ContactShadows } from '@react-three/drei';
+import { Environment, OrbitControls } from '@react-three/drei';
 import Wishes from '../components/model/Wishes';
 import { useQuery } from 'react-query';
 import { fetchWishes } from '../db/api';
@@ -13,32 +13,21 @@ const MainContainer = styled.main`
   height: 100vh;
 `;
 
-const LoadingContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    font-size: 5rem;
-  }
-`;
-
 const NavContainer = styled.nav`
   display: none;
   position: absolute;
   z-index: 10000;
   right: 1rem;
   top: 1rem;
+  font-family: MainFont;
 
   @media all and (max-width: 767px) {
     display: inline;
   }
   div {
+    cursor: pointer;
     background-color: #005bb2;
-    padding: 0.5rem;
+    padding: 0.1rem 1rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -67,7 +56,9 @@ const WishContainer = styled.section`
   z-index: 10000;
   background: rgba(100, 100, 255, 0.5);
   backdrop-filter: blur(2px);
+
   animation: ${heightAnimation} 2s ease forwards;
+  font-family: MainFont;
 `;
 
 const Wish = styled.p`
@@ -87,14 +78,12 @@ export default function Test() {
   return (
     <MainContainer>
       <NavContainer>
-        <div>
-          <p
-            onClick={() => {
-              setWishShow((current) => !current);
-            }}
-          >
-            {wishShow ? '소원 접기' : '소원 펼쳐보기'}
-          </p>
+        <div
+          onClick={() => {
+            setWishShow((current) => !current);
+          }}
+        >
+          <p>{wishShow ? '소원 접기' : '소원 펼쳐보기'}</p>
         </div>
       </NavContainer>
       <WishContainer wishShow={wishShow}>
@@ -125,17 +114,6 @@ export default function Test() {
         <Suspense fallback={true}>
           <Environment files="assets/back.hdr" background={true} />
         </Suspense>
-
-        <ContactShadows
-          rotation-x={Math.PI / 2}
-          position={[0, -10, 0]}
-          opacity={1}
-          width={100}
-          height={100}
-          blur={0.5}
-          far={20}
-          color={'blue'}
-        />
       </Canvas>
     </MainContainer>
   );
