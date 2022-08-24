@@ -13,6 +13,9 @@ const BackgroundImageContainer = styled.div`
   position: absolute;
   z-index: -1;
   clip-path: circle(300px at center);
+  @media (max-width: 575px) {
+    clip-path: circle(150px at center);
+  }
 `;
 
 const SecondBackgroundImage = styled.div`
@@ -25,6 +28,9 @@ const SecondBackgroundImage = styled.div`
   z-index: -2;
   filter: grayscale(80%);
   border: 30px dotted black;
+  @media (max-width: 575px) {
+    border: 10px dotted black;
+  }
 `;
 
 const Header = styled.header`
@@ -47,6 +53,13 @@ const Header = styled.header`
     margin: 0;
     filter: drop-shadow(16px 16px 10px black);
   }
+
+  @media (max-width: 575px) {
+    height: 10rem;
+    p {
+      font-size: 2.5rem;
+    }
+  }
 `;
 
 const Footer = styled.footer`
@@ -68,6 +81,12 @@ const Footer = styled.footer`
   p {
     margin: 0;
     filter: drop-shadow(16px 16px 10px black);
+  }
+
+  @media (max-width: 575px) {
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;
 
