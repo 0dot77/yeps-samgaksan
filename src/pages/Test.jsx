@@ -21,7 +21,7 @@ const NavContainer = styled.nav`
   top: 1rem;
   font-family: MainFont;
   width: 50px;
-  @media all and (max-width: 767px) {
+  @media all and (min-width: 768px) and (max-width: 1023px) {
     display: inline;
   }
   div {
@@ -33,7 +33,6 @@ const NavContainer = styled.nav`
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     p {
       text-align: center;
-
       color: white;
       cursor: pointer;
     }
