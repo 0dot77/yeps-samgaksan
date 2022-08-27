@@ -140,7 +140,7 @@ export default function Test() {
   return (
     <MainContainer>
       <NavContainer>
-        <ProgramDetail programShow={programShow}>
+        <ProgramDetail programShow={programShow} wishShow={wishShow}>
           <div>
             <p>신당 줌 인 &#40;ZOOM-IN&#41;?</p>
             <p>우리 동네에 살고 있는 수호신을 함께 찾아보는 프로그램</p>
@@ -208,6 +208,7 @@ export default function Test() {
         <WishNav
           onClick={() => {
             setWishShow((current) => !current);
+            setProgramShow(false);
           }}
         >
           <p>{wishShow ? '소원 접기' : '소원 펼쳐보기'}</p>
