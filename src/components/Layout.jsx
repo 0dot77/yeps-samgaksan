@@ -90,7 +90,7 @@ const Footer = styled.footer`
   }
 `;
 
-export default function Layout({ children, backgroundImg }) {
+export default function Layout({ children, backgroundImg, mainText = '움직이는 나만의 수호신 만들기' }) {
   return (
     <MainContainer>
       <Header>
@@ -100,7 +100,7 @@ export default function Layout({ children, backgroundImg }) {
       <BackgroundImageContainer backgroundImg={backgroundImg} />
       {children}
       <Footer>
-        <p>움직이는 나만의 수호신 만들기</p>
+        <p>{mainText}</p>
       </Footer>
     </MainContainer>
   );

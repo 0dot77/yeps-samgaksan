@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import FIfthTemple from './pages/FIfthTemple';
 import FirstTemple from './pages/FirstTemple';
 import FourthTemple from './pages/FourthTemple';
 import SecondTemple from './pages/SecondTemple';
@@ -14,11 +13,10 @@ export default function Router() {
       <Routes>
         <Route path="/" element={<Test />} />
         <Route path="/web-temple" element={<WebTemple />} />
-        <Route path="/000-temple" element={<FirstTemple />} />
-        <Route path="/111-temple" element={<SecondTemple />} />
-        <Route path="/222-temple" element={<ThirdTemple />} />
-        <Route path="/333-temple" element={<FourthTemple />} />
-        <Route path="/444-temple" element={<FIfthTemple />} />
+        <Route path="/rlatogml430" element={<FirstTemple />} />
+        <Route path="/wolgoksan" element={<SecondTemple />} />
+        <Route path="/aurora" element={<ThirdTemple />} />
+        <Route path="/nadlemok" element={<FourthTemple />} />
       </Routes>
     </BrowserRouter>
   );
