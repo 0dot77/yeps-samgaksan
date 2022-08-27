@@ -52,10 +52,14 @@ const ProgramDetail = styled.div`
     .first {
       width: 100%;
       text-align: center;
-      font-size: 0.75rem;
-      color: hotpink;
+      font-size: 0.6rem;
+      background-color: hotpink;
+      border-radius: 10px;
+      margin-bottom: 0.5rem;
+      color: white;
       text-decoration: none;
       display: block;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.35) 0px 18px 36px -18px inset;
     }
   }
 `;
