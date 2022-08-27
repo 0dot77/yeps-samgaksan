@@ -32,7 +32,6 @@ const NavContainer = styled.nav`
 const ProgramDetail = styled.div`
   display: ${(props) => (props.programShow ? 'block' : 'none')};
   flex-direction: column;
-
   width: 50%;
   background: linear-gradient(90deg, rgba(100, 100, 255, 1) 0%, rgba(0, 0, 255, 0.01) 200%);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -135,6 +134,22 @@ const Wish = styled.p`
   margin-bottom: 1rem;
   background: rgba(255, 255, 255, 0.5);
   border-radius: 50%;
+`;
+
+const Footer = styled.div`
+  display: none;
+  @media screen and (max-width: 1199px) {
+    display: block;
+  }
+  right: 0;
+  width: 10rem;
+  position: absolute;
+  z-index: 10000;
+  bottom: 0;
+  a {
+    display: ${(props) => (props.wishShow ? 'none' : 'inline')};
+    color: hotpink;
+  }
 `;
 
 export default function Test() {
@@ -247,6 +262,19 @@ export default function Test() {
           <Environment files="assets/back.hdr" background={true} />
         </Suspense>
       </Canvas>
+      <Footer wishShow={wishShow}>
+        <Link to="/web-temple">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth="1.5"
+            stroke="currentColor"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </Link>
+      </Footer>
     </MainContainer>
   );
 }
