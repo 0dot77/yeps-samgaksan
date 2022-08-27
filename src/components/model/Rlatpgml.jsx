@@ -12,5 +12,7 @@ export default function Rlatpgml() {
     actions['animation_0'].play();
   });
 
-  return <primitive ref={group} object={scene} position={[0, 0, 0]} scale={[0.5, 0.5, 0.5]} />;
+  return (
+    <primitive ref={group} object={scene} position={[-0.25, 0, 0]} scale={[0.5, 0.5, 0.5]} rotation={[0, 0, 1.2]} />
+  );
 }

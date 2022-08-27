@@ -12,5 +12,5 @@ export default function Nadlemok() {
     actions['animation_0'].play();
   });
 
-  return <primitive ref={group} object={scene} position={[0, 0, 0]} scale={[0.5, 0.5, 0.5]} />;
+  return <primitive ref={group} object={scene} position={[-1, -1.2, 0]} scale={[0.5, 0.5, 0.5]} />;
 }

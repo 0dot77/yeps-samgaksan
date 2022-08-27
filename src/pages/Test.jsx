@@ -7,6 +7,7 @@ import { useQuery } from 'react-query';
 import { fetchWishes } from '../db/api';
 import { Suspense } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const MainContainer = styled.main`
   width: 100%;
@@ -16,26 +17,88 @@ const MainContainer = styled.main`
 const NavContainer = styled.nav`
   display: none;
   position: absolute;
-  z-index: 100000;
-  right: 1rem;
   top: 1rem;
+  right: 0;
+  margin-right: 1rem;
   font-family: MainFont;
-  width: 50px;
+  z-index: 100000;
+  width: 100%;
   @media all and (max-width: 1023px) {
-    display: inline;
+    display: flex;
+    justify-content: flex-end;
   }
-  div {
-    cursor: pointer;
-    background-color: #005bb2;
-    padding: 0.1rem 1rem;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    p {
-      text-align: center;
-      color: white;
-      cursor: pointer;
+`;
+
+const ProgramDetail = styled.div`
+  display: ${(props) => (props.programShow ? 'block' : 'none')};
+  flex-direction: column;
+
+  width: 50%;
+  background: linear-gradient(90deg, rgba(100, 100, 255, 1) 0%, rgba(0, 0, 255, 0.01) 200%);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 10px;
+  p {
+    &:first-child {
+      font-size: 1.25rem;
     }
+    padding: 0rem 1rem;
+    color: white;
+    font-size: 0.75rem;
+  }
+
+  div:nth-child(2) {
+    padding: 0rem 0.5rem;
+    .first {
+      width: 100%;
+      text-align: center;
+      font-size: 0.75rem;
+      color: hotpink;
+      text-decoration: none;
+      display: block;
+    }
+  }
+`;
+
+const ProgramNav = styled.div`
+  cursor: pointer;
+  width: 50px;
+  background-color: #005bb2;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: ${(props) => (props.wishShow ? 'none' : 'block')};
+  align-items: center;
+
+  p,
+  span {
+    text-align: center;
+    color: white;
+    word-break: break-all;
+    cursor: pointer;
+  }
+  svg {
+    color: white;
+  }
+`;
+
+const WishNav = styled.div`
+  cursor: pointer;
+  width: 50px;
+  margin-left: 1rem;
+  background-color: #005bb2;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  display: flex;
+  align-items: center;
+  p {
+    text-align: center;
+    color: white;
+    word-break: break-all;
+    cursor: pointer;
   }
 `;
 
@@ -73,17 +136,82 @@ const Wish = styled.p`
 export default function Test() {
   const { isLoading, data } = useQuery('wishes', () => fetchWishes(), { refetchInterval: 10000 });
   const [wishShow, setWishShow] = useState(false);
-
+  const [programShow, setProgramShow] = useState(false);
   return (
     <MainContainer>
       <NavContainer>
-        <div
+        <ProgramDetail programShow={programShow}>
+          <div>
+            <p>신당 줌 인 &#40;ZOOM-IN&#41;?</p>
+            <p>우리 동네에 살고 있는 수호신을 함께 찾아보는 프로그램</p>
+          </div>
+          <div>
+            <Link to="/rlatogml430" className="first">
+              사람들을 위한 잔잔한 힐링 파도 신
+            </Link>
+            <Link to="/wolgoksan" className="first">
+              월곡산의 얼렁뚱땅 수호자 일랑이
+            </Link>
+            <Link to="/aurora" className="first">
+              거리에 떠도는 사념을 먹는 신
+            </Link>
+            <Link to="/nadlemok" className="first">
+              파란참새 나들목이입니다 수상스키 타는 사람 밀어 넘어뜨리는 걸 좋아합니다
+            </Link>
+          </div>
+        </ProgramDetail>
+        <ProgramNav
+          wishShow={wishShow}
+          onClick={() => {
+            setProgramShow((current) => !current);
+          }}
+        >
+          {programShow ? (
+            <>
+              <p>신당 줌</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM13.5 10.5h-6"
+                />
+              </svg>
+              <span>아웃</span>
+            </>
+          ) : (
+            <>
+              <p>신당 줌</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607zM10.5 7.5v6m3-3h-6"
+                />
+              </svg>
+              <span>인</span>
+            </>
+          )}
+        </ProgramNav>
+        <WishNav
           onClick={() => {
             setWishShow((current) => !current);
           }}
         >
           <p>{wishShow ? '소원 접기' : '소원 펼쳐보기'}</p>
-        </div>
+        </WishNav>
       </NavContainer>
       <WishContainer wishShow={wishShow}>
         {isLoading ? (

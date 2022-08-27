@@ -85,12 +85,17 @@ const Footer = styled.footer`
 
   @media (max-width: 575px) {
     p {
-      font-size: 1.5rem;
+      font-size: ${(props) => props.footerFontSize};
     }
   }
 `;
 
-export default function Layout({ children, backgroundImg, mainText = '움직이는 나만의 수호신 만들기' }) {
+export default function Layout({
+  children,
+  backgroundImg,
+  mainText = '움직이는 나만의 수호신 만들기',
+  footerFontSize = '1.5rem',
+}) {
   return (
     <MainContainer>
       <Header>
@@ -99,7 +104,7 @@ export default function Layout({ children, backgroundImg, mainText = '움직이�
       <SecondBackgroundImage backgroundImg={backgroundImg} />
       <BackgroundImageContainer backgroundImg={backgroundImg} />
       {children}
-      <Footer>
+      <Footer footerFontSize={footerFontSize}>
         <p>{mainText}</p>
       </Footer>
     </MainContainer>
