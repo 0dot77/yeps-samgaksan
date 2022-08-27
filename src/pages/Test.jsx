@@ -21,7 +21,7 @@ const NavContainer = styled.nav`
   top: 1rem;
   font-family: MainFont;
   width: 50px;
-  @media all and (min-width: 768px) and (max-width: 1023px) {
+  @media all and (max-width: 1023px) {
     display: inline;
   }
   div {
@@ -52,7 +52,6 @@ const WishContainer = styled.section`
   display: ${(props) => (props.wishShow ? 'normal' : 'none')};
   width: 100%;
   overflow-y: scroll;
-
   position: absolute;
   z-index: 10000;
   background: rgba(100, 100, 255, 0.5);
@@ -73,7 +72,6 @@ const Wish = styled.p`
 
 export default function Test() {
   const { isLoading, data } = useQuery('wishes', () => fetchWishes(), { refetchInterval: 10000 });
-
   const [wishShow, setWishShow] = useState(false);
 
   return (
